@@ -11,7 +11,8 @@ const config = {
       url: "https://api.openweathermap.org/data/2.5/weather"
     },
     unsplash: {
-      apiKey: "217d39354a152114b5bb4e0f77e4ca3c7ecdbe155bb9d43580e11138def7915a",
+      apiKey:
+        "217d39354a152114b5bb4e0f77e4ca3c7ecdbe155bb9d43580e11138def7915a",
       url: "https://api.unsplash.com/search/photos"
     }
   }
