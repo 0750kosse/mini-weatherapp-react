@@ -2,8 +2,9 @@ import React from "react";
 
 function Photo({ image }) {
   return (
-    // <img />
-    <button>Click</button>
+    <div>
+      <figure className="photo" id="photo" />
+    </div>
   );
 }
 
