@@ -25,7 +25,7 @@ class App extends React.Component {
       images: images,
       image: images.results[0]
     });
-    console.log(this.state.images);
+    // console.log(this.state.images);
   }
 
   render() {

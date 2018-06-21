@@ -17,21 +17,23 @@ class Search extends React.Component {
         return weatherResponse.json();
       })
       .then(weatherData => {
-        console.log(weatherData);
-        //console.log(this.state.weather);
         return weatherData;
       })
       .then(weatherData => {
         const { apiKey, url } = this.props.config.api.unsplash;
         weather = weatherData;
-        return fetch(`${url}${weatherData.description}&client_id=${apiKey}`);
+        return fetch(
+          `${url}${weatherData.weather[0].description}&client_id=${apiKey}`
+        );
       })
       .then(function(imageResponse) {
         return imageResponse.json();
       })
       .then(imageData => {
-        //console.log(this.state.images);
+        // console.log(imageData);
         this.props.receiver(weather, imageData);
+
+        // console.log(weather, imageData);
       })
       .catch(error => {
         console.log(error);

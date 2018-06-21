@@ -1,7 +1,6 @@
 import React from "react";
 
 function Photo({ image }) {
-  console.log(image);
   return (
     <div>
       <figure className="photo" id="photo">
