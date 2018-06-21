@@ -25,7 +25,7 @@ class App extends React.Component {
       images: images,
       image: images.results[0]
     });
-    // console.log(this.state.images);
+    console.log(this.state.images.results);
   }
 
   render() {
@@ -34,7 +34,7 @@ class App extends React.Component {
         <Header title="El Tiempo" />
         <Photo image={this.state.image} />
         <Info />
-        <Thumbs images={this.state.images.results} />
+        <Thumbs thumbs={this.state.images.results ? this.state.images.results : ""} />
         <Search config={this.config} receiver={this.receiver} />
       </div>
     );
