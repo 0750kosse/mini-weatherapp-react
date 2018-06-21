@@ -3,7 +3,9 @@ import React from "react";
 function Photo({ image }) {
   return (
     <div>
-      <figure className="photo" id="photo" />
+      <figure className="photo" id="photo">
+        <img src={image} />
+      </figure>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
 function Thumbs() {
-  return <div class="thumbs" id="thumbs" />;
+  return <div className="thumbs" id="thumbs" />;
 }
 
 export default Thumbs;
