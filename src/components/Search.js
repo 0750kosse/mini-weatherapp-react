@@ -3,9 +3,6 @@ import React from "react";
 class Search extends React.Component {
   constructor() {
     super();
-    this.state = {
-      weather: {}
-    };
     this.handleSearch = this.handleSearch.bind(this);
   }
 
@@ -13,43 +10,32 @@ class Search extends React.Component {
     event.preventDefault();
     const { apiKey, url } = this.props.config.api.weather;
     const city = event.target.city.value;
+    let weather;
 
     return fetch(`${url}${city}&APPID=${apiKey}`)
       .then(function(weatherResponse) {
         return weatherResponse.json();
       })
       .then(weatherData => {
-        //console.log(weatherData);
-        this.setState({
-          weather: weatherData
-          // weather: {
-          //   location: this.city,
-          //   description: weatherData.weather[0].description,
-          //   temp: weatherData.main.temp
-          // }
-        });
+        console.log(weatherData);
         //console.log(this.state.weather);
         return weatherData;
       })
       .then(weatherData => {
         const { apiKey, url } = this.props.config.api.unsplash;
-        return fetch(
-          `${url}${this.state.weather.description}&client_id=${apiKey}`
-        )
-          .then(function(imageResponse) {
-            return imageResponse.json();
-          })
-          .then(imageData => {
-            this.setState({
-              images: imageData
-              //weather: Object.assign(this.state.weather, { imgs })
-            });
-            //console.log(this.state.images);
-            this.props.receiver(this.state.weather, this.state.images);
-          });
+        weather = weatherData;
+        return fetch(`${url}${weatherData.description}&client_id=${apiKey}`);
       })
-      .catch(error => console.log(error));
-    
+      .then(function(imageResponse) {
+        return imageResponse.json();
+      })
+      .then(imageData => {
+        //console.log(this.state.images);
+        this.props.receiver(weather, imageData);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
